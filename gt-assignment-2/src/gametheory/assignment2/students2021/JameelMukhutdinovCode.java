@@ -36,14 +36,6 @@ public class JameelMukhutdinovCode implements Player {
             return myLastMove;
         }
         if ((xB >= xA) && (xB >= xC)) {
-            if (xB == xA) {
-                if (r.nextBoolean()) {
-                    myLastMove = 2;
-                } else {
-                    myLastMove = 1;
-                }
-                return myLastMove;
-            }
             if (xB == xC) {
                 if (r.nextBoolean()) {
                     myLastMove = 2;
@@ -55,28 +47,9 @@ public class JameelMukhutdinovCode implements Player {
             myLastMove = 2;
             return myLastMove;
         }
-        if ((xC >= xA) && (xC >= xB)) {
-            if (xC == xA) {
-                if (r.nextBoolean()) {
-                    myLastMove = 1;
-                } else {
-                    myLastMove = 3;
-                }
-                return myLastMove;
-            }
-            if (xC == xB) {
-                if (r.nextBoolean()) {
-                    myLastMove = 3;
-                } else {
-                    myLastMove = 2;
-                }
-                return myLastMove;
-            }
-            myLastMove = 3;
-            return myLastMove;
-        }
+        myLastMove = 3;
+        return myLastMove;
 
-        return r.nextInt(3)+1;
     }
 
     @Override

@@ -101,7 +101,7 @@ public class JameelMukhutdinovTest {
 
     public static double getSum(ArrayList<Double> list) {
         double sum = 0;
-        for(Double d : list)
+        for (Double d : list)
             sum += d;
         return sum;
     }
@@ -109,9 +109,10 @@ public class JameelMukhutdinovTest {
     public static void main(String[] args) {
         ArrayList<Player> players = new ArrayList<Player>();
         int rounds = 100;
-        int strategies1 = 30;
+        int strategies1 = 0;
         int strategies2 = 30;
         int strategies3 = 30;
+        int strategies4 = 30;
         double[] a;
         for (int i = 0; i < strategies1; i++) {
             players.add(new JameelMukhutdinovCode());
@@ -122,16 +123,20 @@ public class JameelMukhutdinovTest {
         for (int i = 0; i < strategies3; i++) {
             players.add(new RandomPlayer());
         }
+        for (int i = 0; i < strategies4; i++) {
+            players.add(new RandomGreedyPlayer());
+        }
 
         ArrayList<Double> playerStats = new ArrayList<Double>();
         ArrayList<Double> greedyStats = new ArrayList<Double>();
         ArrayList<Double> randomStats = new ArrayList<Double>();
+        ArrayList<Double> randomGreedyStats = new ArrayList<Double>();
 
         System.out.println(players.size());
 
         for (int p = 0; p < players.size(); p++) {
             for (int o = 0; o < (players.size()); o++) {
-                if (p!=o){
+                if (p != o) {
                     a = play(players.get(p), players.get(o), rounds);
                     switch (players.get(p).getEmail()) {
                         case ("d.muhutdinov@innopolis.university"):
@@ -142,6 +147,9 @@ public class JameelMukhutdinovTest {
                             break;
                         case ("RandomPlaya@jameel.ml"):
                             randomStats.add(a[0]);
+                            break;
+                        case ("RandomGreedyPlaya@jameel.ml"):
+                            randomGreedyStats.add(a[0]);
                             break;
                         default:
                             System.out.println("WTF");
@@ -156,6 +164,9 @@ public class JameelMukhutdinovTest {
                         case ("RandomPlaya@jameel.ml"):
                             randomStats.add(a[1]);
                             break;
+                        case ("RandomGreedyPlaya@jameel.ml"):
+                            randomGreedyStats.add(a[1]);
+                            break;
                         default:
                             System.out.println("WTF");
                     }
@@ -163,12 +174,14 @@ public class JameelMukhutdinovTest {
             }
         }
 
-        System.out.println("Player strategy sum = " + getSum(playerStats));
-        System.out.println("Player strategy avg = " + getSum(playerStats)/playerStats.size() + " for " + playerStats.size());
+        //System.out.println("Player strategy sum = " + getSum(playerStats));
+        //System.out.println("Player strategy avg = " + getSum(playerStats)/playerStats.size() + " for " + playerStats.size());
         System.out.println("Greedy strategy sum = " + getSum(greedyStats));
-        System.out.println("Greedy strategy avg = " + getSum(greedyStats)/greedyStats.size() + " for " + greedyStats.size());
+        System.out.println("Greedy strategy avg = " + getSum(greedyStats) / greedyStats.size() + " for " + greedyStats.size());
         System.out.println("Random strategy sum = " + getSum(randomStats));
-        System.out.println("Random strategy avg = " + getSum(randomStats)/randomStats.size() + " for " + randomStats.size());
+        System.out.println("Random strategy avg = " + getSum(randomStats) / randomStats.size() + " for " + randomStats.size());
+        System.out.println("RandomGreedy strategy sum = " + getSum(randomGreedyStats));
+        System.out.println("RandomGreedy strategy avg = " + getSum(randomGreedyStats) / randomGreedyStats.size() + " for " + randomGreedyStats.size());
 
     }
 }

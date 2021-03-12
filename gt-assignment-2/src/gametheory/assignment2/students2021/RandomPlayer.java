@@ -11,7 +11,7 @@ public class RandomPlayer implements Player {
 
     @Override
     public void reset() {
-        r = new Random();
+        r = new Random(System.currentTimeMillis());
     }
 
     @Override
