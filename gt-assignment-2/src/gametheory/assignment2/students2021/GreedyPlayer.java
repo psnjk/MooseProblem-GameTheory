@@ -1,4 +1,4 @@
-package gametheory.assignment2;
+package gametheory.assignment2.students2021;
 
 import java.util.Random;
 
